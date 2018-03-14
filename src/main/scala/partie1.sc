@@ -1,8 +1,13 @@
-def op(oper:Char, a: Double, b:Double): Double ={
+def op(oper:Char, a: Double, b:Double): Double = oper match{
+  case '+' => a+b
+  case '-' => a-b
+  case '*' => a*b
+  case '^' => pow(a,b)
   //operations binaires
 }
 
-def op(oper:Char, a: Double): Double ={
+def op(oper:Char, a: Double): Double = oper match{
+  case '!' => fact(a)
   //operations unaires
 }
 
