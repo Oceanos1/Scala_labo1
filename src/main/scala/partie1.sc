@@ -2,7 +2,7 @@ def op(oper:Char, a: Double, b:Double): Double = oper match{
   case '+' => a+b
   case '-' => a-b
   case '*' => a*b
-  case '^' => pow(a,Math.floor(b))
+  case '^' => pow(a,Math.floor(b).toInt)
   //operations binaires
 }
 
@@ -25,6 +25,6 @@ def pow(a: Double, b:Int): Double ={
       loop(acc * a, a, b);
     }
   }
-  
+
   loop(1, a, b)
 }
