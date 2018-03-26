@@ -7,7 +7,7 @@ def op(oper:Char, a: Double, b:Double): Double = oper match{
 }
 
 def op(oper:Char, a: Double): Double = oper match{
-  case '!' => return 1.0 //fact(a)
+  case '!' => fact(a)
   //operations unaires
 }
 
@@ -71,3 +71,42 @@ def ModInvert(a: Int, b:Int) = {
   }
 }
 
+/**
+  * Allows storing and loading of variables by name
+  */
+object Memory{
+  //Represents the memory, maps Strings (names) to Doubles (values)
+  var memory: Map[String, Double] = Map()
+
+  def checkIsValidName(name: String): Boolean = {
+    for(char <- name){
+      if (char < 'A' || char > 'z'){
+        false
+      }
+    }
+    true
+  }
+
+  /**
+    * Stores a variable in memory. If the name if incorrect, does nothing. The
+    * name must match the format [a-zA-Z]+
+    * @param name
+    * @param value
+    * @return
+    */
+  def store(name:String, value:Double) = {
+    if(checkIsValidName(name)){
+      memory(name) = value
+    }
+  }
+
+  /**
+    * Loads a variable from memory
+    * @param name
+    * @return the variable if it is memory, otherwise None
+    */
+  def load(name:String) = {
+    memory.getOrElse(name, None)
+  }
+
+}
