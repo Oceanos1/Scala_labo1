@@ -1,18 +1,37 @@
+import scala.collection.mutable.Map
+
 def op(oper:Char, a: Double, b:Double): Double = oper match{
   case '+' => a+b
   case '-' => a-b
   case '*' => a*b
   case '^' => pow(a,Math.floor(b).toInt)
+  case '%' => a%b
   //operations binaires
 }
 
 def op(oper:Char, a: Double): Double = oper match{
-  case '!' => fact(a)
+  case '!' => fact(a.toInt)
   //operations unaires
 }
 
 def gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
 
+/**
+  * Calcule récursivement la factorielle d'un entier
+  * @param a
+  * @return
+  */
+def fact(a: Int): Int ={
+  def loop(acc: Int, a: Int): Int ={
+    if(a < 2){
+      acc
+    }else{
+      loop(acc * a, a - 1);
+    }
+  }
+
+  loop(1, a)
+}
 
 /**
   * Calcule récursivement 'a' à la puissance 'b'. Ne prend que les puissances
@@ -110,3 +129,5 @@ object Memory{
   }
 
 }
+
+fact(3)
