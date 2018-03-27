@@ -1,3 +1,10 @@
+/*
+ * Project:  Laboratoire 1: Calculatrice (Partie 1)
+ * File:     partie1.wc
+ * Authors:  Edward Ransome & Michael Spierer
+ * Date:     27.03.2018
+ *
+ */
 import scala.collection.mutable.Map
 
 /**
