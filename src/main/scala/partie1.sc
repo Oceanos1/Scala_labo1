@@ -183,12 +183,16 @@ def ModInvert(a: Int, b: Int) = {
 }
 
 /**
-  * Allows storing and loading of variables by name
+  * Permet de stocker et charger des variables nommées
   */
 object Memory {
-  //Represents the memory, maps Strings (names) to Doubles (values)
+  //Représente la mémoire, effectue une correspondance entre Strings (noms)
+  // et Doubles (valeurs)
   var memory: Map[String, Double] = Map()
 
+  /**
+    * Vérifie si un nom est correct (composé uniquement de lettres, pas la chaîne vide)
+    */
   def checkIsValidName(name: String): Boolean = {
     if (name.length() == 0) {
       false
@@ -202,12 +206,11 @@ object Memory {
   }
 
   /**
-    * Stores a variable in memory. If the name if incorrect, does nothing. The
-    * name must match the format [a-zA-Z]+
+    * Stocke une variable dans la mémoire. Si le nom est incorrect, ne fait rien.
+    * Le nom doit respecter le format [a-zA-Z]+ et ne peut pas être vide.
     *
     * @param name
     * @param value
-    * @return
     */
   def store(name: String, value: Double) = {
     if (checkIsValidName(name)) {
@@ -216,10 +219,10 @@ object Memory {
   }
 
   /**
-    * Loads a variable from memory
+    * Charge une variable depuis la mémoire
     *
     * @param name
-    * @return the variable if it is memory, otherwise None
+    * @return la variable si elle est stockée, sinon None
     */
   def load(name: String) = {
     memory.getOrElse(name, None)
