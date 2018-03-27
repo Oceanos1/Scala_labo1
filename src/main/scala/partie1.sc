@@ -53,7 +53,7 @@ def solve(a: Double, b: Double, c: Double): Any = {
   * Calcule récursivement la factorielle d'un entier
   *
   * @param a
-  * @return
+  * @return la factorielle de 'a'
   */
 def fact(a: Int): Int = {
   def loop(acc: Int, a: Int): Int = {
@@ -63,7 +63,6 @@ def fact(a: Int): Int = {
       loop(acc * a, a - 1);
     }
   }
-
   loop(1, a)
 }
 
@@ -73,7 +72,7 @@ def fact(a: Int): Int = {
   *
   * @param a
   * @param b
-  * @return
+  * @return 'a' à la puissance 'b'
   */
 def pow(a: Double, b: Int): Double = {
   def loop(acc: Double, a: Double, b: Int): Double = {
@@ -171,6 +170,9 @@ object Memory {
   var memory: Map[String, Double] = Map()
 
   def checkIsValidName(name: String): Boolean = {
+    if (name.length() == 0) {
+      false
+    }
     for (char <- name) {
       if (char < 'A' || char > 'z') {
         false
