@@ -1,17 +1,27 @@
 import scala.collection.mutable.Map
 
-//operations binaires
+/**
+  * Permet d'effectuer des opérations arithmétiques binaires
+  * @param oper l'opérande qui défini l'opération
+  * @param a
+  * @param b
+  * @return le résultat de l'opération
+  */
 def op(oper: Char, a: Double, b: Double): Double = oper match {
   case '+' => a + b
   case '-' => a - b
   case '*' => a * b
   case '^' => pow(a, Math.floor(b).toInt)
   case '%' => a % b
-  //case '/' => a%b
-
+  case '/' => a / b
 }
 
-//operations unaires
+/**
+  * Permet d'effectuer des opérations arithmétiques unaires
+  * @param oper l'opérande qui défini l'opération
+  * @param a
+  * @return le résultat de l'opération
+  */
 def op(oper: Char, a: Double): Double = oper match {
   case '!' => fact(a.toInt)
 }
