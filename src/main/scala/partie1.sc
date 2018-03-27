@@ -51,10 +51,13 @@ def solve(a: Double, b: Double, c: Double): Any = {
     return new Exception("L'équation n'est pas du second degrés")
   }
   val disc = discriminant(a, b, c)
+  // Les valeurs à virgule flottantes valant 0 peuvent, selon le standard IEEE 754,
+  // valoir -0.0 à l'affichage. Pour régler ceci, on ajoute 0.0 à nos résultats
+  //https://stackoverflow.com/questions/6724031/how-can-a-primitive-float-value-be-0-0-what-does-that-mean
   disc match {
-    case j if j > 0 => ((-b + Math.sqrt(disc)) / (2 * a), (-b - Math.sqrt(disc)) / (2 * a))
-    case k if k == 0 => ((-b + Math.sqrt(disc)) / (2 * a))
-    case _ => ((-b / (2 * a), Math.sqrt(-disc) / (2 * a)), (-b / (2 * a), -Math.sqrt(-disc) / (2 * a)))
+    case j if j > 0 => ((-b + Math.sqrt(disc)) / (2 * a) + 0.0, (-b - Math.sqrt(disc)) / (2 * a))
+    case k if k == 0 => ((-b + Math.sqrt(disc)) / (2 * a)) + 0.0
+    case _ => ((-b / (2 * a) + 0.0, Math.sqrt(-disc) / (2 * a) + 0.0), (-b / (2 * a) + 0.0, -Math.sqrt(-disc) / (2 * a) + 0.0))
 
   }
 }
@@ -214,6 +217,4 @@ object Memory {
   def load(name: String) = {
     memory.getOrElse(name, None)
   }
-
 }
-
