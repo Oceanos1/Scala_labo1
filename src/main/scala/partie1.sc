@@ -127,10 +127,10 @@ def isPrime(number: Int): Boolean = {
   * @param number le nombre dont on veut la racine carrée
   * @return la racine carrée du nombre passé en paramètre 
   */
-def square(number: Int): Double = {
+def sqrt(number: Double): Double = {
   val epsilon = 0.0001
 
-  def loop(n: Int, x: Double): Double = {
+  def loop(n: Double, x: Double): Double = {
     if (Math.abs(x * x - n) / n < epsilon) x else loop(n, (x + (n / x)) / 2)
   }
 
